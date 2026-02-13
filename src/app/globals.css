@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #f97316;
+  --accent: #f43f5e;
+  --bg: #FAF9F6;
+  --text: #111827;
+  --muted: #6b7280;
+  --success: #10b981;
+  --error: #ef4444;
+  --warning: #f59e0b;
+}
+
+.dark {
+  --bg: #0f172a;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+}
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.dark .skeleton {
+  background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+  background-size: 200% 100%;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.btn-press:active {
+  transform: scale(0.95);
+}
+
+.toast-enter {
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.focus-visible:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
